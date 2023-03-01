@@ -1,0 +1,237 @@
+---
+title: "A reproducible introduction to reproducibility"
+title-slide-attributes:
+    data-background-color: "#570F1A"
+    data-color: "#FFFFFF"
+author: "Stef De Sabbata"
+date: now
+date-format: long
+format: 
+  revealjs:
+    embed-resources: true
+    theme: uol-red-theme.scss
+bibliography: bibliography.bib
+citations-hover: true
+---
+
+
+## Some context
+
+
+:::: {.columns style="line-height: 100%;"}
+::: {.column width="50%"}
+
+*"Write what you know"*
+
+My take on reproducibility has been shaped by my own background and experiences
+
+- background in computer science
+- research in geography
+- teaching and working in R and Python
+
+:::
+::: {.column width="5%"}
+:::
+::: {.column width="45%"}
+
+*"One does not simply..."*
+
+Reproducibility is complex and laborious
+
+- you don't have to do everything tomorrow!
+  - one step at the time
+- not everything might make sense or be fasible in your field
+
+:::
+::::
+
+
+## Reproduciblity
+
+In quantitative research, an analysis or project are considered to be **reproducible** if:
+
+> *"the data and code used to make a finding are available and they are sufficient for an independent researcher to recreate the finding."* [@gandrud2018reproducible]
+
+As research practices become more and more *digital*, similar necessities and opportunities arise for researchers in a wide range of fields -- whether they use coding or not
+
+
+## Aims
+
+In **scientific research**:
+
+- verificability of claims through replication
+- incremental work, avoid duplication
+
+More generally:
+
+- better **working practices**
+    - coding, project structure, versioning
+- better teamwork
+- higher impact (not just results, but code, data, etc.)
+
+
+
+## Best practices {.smaller}
+
+@doi:10.1080/13658816.2015.1137579 have discussed the issue of reproducibility and open scholarship (in GIScience), identifying the following best practices:
+
+- **Data** should available, accessible, within the public domain
+- **Software** used should be open, **code** should be scrutable
+- **Workflows** should be public
+  - link data, software, methods of analysis and presentation with discursive narrative
+- The **peer review** process and academic publishing should 
+  - require submission of a workflow model
+  - ideally open archiving of those materials necessary for replication
+
+Where full reproducibility is not possible (commercial software or sensitive data) aim to adopt aspects attainable within circumstances
+
+
+
+## In practice
+
+:::: {.columns style="line-height: 100%;"}
+::: {.column width="50%"}
+
+@gandrud2018reproducible identified 5 key aspects of reproducibility
+
+1. Document everything
+2. Document well
+3. Workflow
+4. Future-proof formats
+5. Store and share
+
+:::
+::: {.column width="5%"}
+:::
+::: {.column width="45%"}
+
+
+... taking a page out of a book **software engineering** book:
+
+- project design
+- software **readibility**
+- testing
+- **versioning**
+
+:::
+::::
+
+
+
+## 1. Document everything
+
+In order to be reproducible, every step of your project should be documented in detail
+
+- **choices**, decisions and motivations
+- **data** gathering (links, licenses, etc.)
+- data **analysis**, preferably coding
+- **results** presentation, preferably coding
+
+Well documented [Quarto](https://quarto.org/) documents are an excellent approach
+
+
+## 2. Document well {.smaller}
+
+Documents and code should be **easily understood** 
+
+- by someone outside your project
+- by yourself in six-month time! `r emo::ji("sweat_smile")`
+
+Some tips:
+
+- use a simple, **systematic** language for notes
+- use a coding **style guide** (e.g. [tidyverse](http://style.tidyverse.org/)) consistently
+  - **comment** your code (!) especially if ambiguous or important
+- include in each file 
+  - dates and contributors
+  - materials, sources and other references 
+  - **dependencies** (i.e., other files the current file depends on)
+
+
+
+## 3. Workflow {.smaller}
+
+Relationships between files in a project are not simple:
+
+- in which **order** are file executed?
+- when to copy files from one folder to another, and where?
+
+A common approach in computer science is using **make files**
+
+- commonly written in *bash* on Linux systems
+- they can be written in any language ([example in R](https://github.com/sdesabbata/r-for-geographic-data-science/blob/main/src/Make.R))
+
+
+```{r}
+#| echo: true
+#| eval: false
+#| 
+cat("\n\n>>> Rendering 102-slides-reproducible-data-science.Rmd <<<\n\n")
+rmarkdown::render(
+  paste0(
+    Sys.getenv("RGDS_HOME"), 
+    "/src/slides/102-slides-reproducible-data-science.Rmd"
+  ), 
+  quiet = TRUE, 
+  output_dir = paste0(Sys.getenv("RGDS_HOME"), "/docs/slides")
+)
+
+```
+
+
+
+## 4. Future-proof formats {.smaller}
+
+Complex formats (e.g., .docx, .xlsx, .shp, ArcGIS .mxd)
+
+- can become obsolete
+- are not always portable
+- usually require proprietary software
+
+Use the **simplest** format, preferably based on **text files**
+
+- data: .txt, .csv, .tsv
+- analysis: R scripts (e.g., [Tidyverse](https://www.tidyverse.org/)), Python scripts (e.g., [Pandas](https://pandas.pydata.org/))
+- visualisation: R scripts (e.g., [ggplot2](https://ggplot2.tidyverse.org/)), Python scripts (e.g., [Matplotlib](https://matplotlib.org/), [Vega-Altair](https://altair-viz.github.io/))
+- diagrams: [Mermaid](https://mermaid.js.org/#/), [Graphviz](https://graphviz.org/)
+- write-up: [Markdown](https://daringfireball.net/projects/markdown/syntax), [Quarto](https://quarto.org/), [LaTeX](https://www.latex-project.org/) -- compile to HTML
+- bibliography: [BibTeX](http://www.bibtex.org/) using [Zotero](https://www.zotero.org/)
+- presentations: [Quarto](https://quarto.org/) -- compile to HTML
+
+
+
+## 5. Store and share {.smaller}
+
+Reproducible data analysis is particularly important when working in **teams**
+
+- to share and communicate your work
+- maintain correct versioning
+
+Common approaches
+
+- shared web documents (e.g., Office 365, Google Docs)
+- shared folders or [Dropbox](https://www.dropbox.com)
+    - simple option to work in teams but no versioning, branches
+- [Git](https://git-scm.com) (e.g.,  [GitHub](https://github.com) or [GitLab](https://about.gitlab.com/))
+    - great to work in teams and share your work publicly
+    - can be more difficult at first
+
+
+## Where to start? {.smaller}
+
+My two cents... `r emo::ji("woman_technologist_light_skin_tone")`
+
+- first, make sure you use a text-based data format where possible
+- next, start using [Markdown](https://daringfireball.net/projects/markdown/syntax), e.g. taking notes with a software like [Zettlr](https://www.zettlr.com/)
+  - you can then move to writing documents and papers with [Quarto](https://quarto.org/)
+  - maybe even presentations in [Quarto](https://quarto.org/)
+  - maybe move your bibliography to [Zotero](https://www.zotero.org/) (there are export/import tools)
+- then, get coding with with [R](https://www.r-project.org/) ([Tidyverse](https://www.tidyverse.org/)), [Python](https://www.python.org/) or another languange
+  - create dynamic analysis document including code in your [Quarto](https://quarto.org/) document
+  - create your visualisations using [ggplot2](https://ggplot2.tidyverse.org/), [Matplotlib](https://matplotlib.org/) or another library or languange
+- finally, explore the use of [Git](https://git-scm.com) (e.g.,  [GitHub](https://github.com) or [GitLab](https://about.gitlab.com/)) for your own private project
+  - use use of [Git](https://git-scm.com) to publish your project publically
+
+
+## References
+

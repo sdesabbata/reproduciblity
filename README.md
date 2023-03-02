@@ -1,8 +1,6 @@
-[![CC BY 4.0][cc-by-shield]][cc-by]
-
-
-
 # Notes on reproduciblity
+
+[![CC BY 4.0][cc-by-shield]][cc-by]
 
 A (currently small) collection of my materials on reproducibility and open scholarship.
 

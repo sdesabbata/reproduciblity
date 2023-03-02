@@ -14,7 +14,7 @@ A (currently small) collection of my materials on reproducibility and open schol
 
 
 
-## Where to start? {.smaller}
+## Where to start?
 
 New to reproducibility and don't know where to start? Here are my two cents...
 
@@ -29,6 +29,7 @@ New to reproducibility and don't know where to start? Here are my two cents...
 - finally, explore the use of **[Git](https://git-scm.com)** (e.g.,  [GitHub](https://github.com) or [GitLab](https://about.gitlab.com/)) for your own private project
   - use use of [Git](https://git-scm.com) to publish your project publically
 - also, keep an eye on licences
+
 
 
 ## License

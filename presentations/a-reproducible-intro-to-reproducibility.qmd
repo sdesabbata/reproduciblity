@@ -11,7 +11,7 @@ format:
     embed-resources: true
     theme: uol-red-theme.scss
     slide-number: true
-    footer: "CC BY 4.0 &nbsp;&#x2022;&nbsp; [github.com/sdesabbata/reproduciblity](https://github.com/sdesabbata/reproduciblity) "
+    footer: "CC BY 4.0 &nbsp;&#x2022;&nbsp; [sdesabbata.github.io/reproduciblity](https://sdesabbata.github.io/reproduciblity/)"
 bibliography: bibliography.bib
 citations-hover: true
 ---

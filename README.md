@@ -8,7 +8,7 @@ A (currently small) collection of my materials on reproducibility and open schol
 
 ## Presentation slides
 
-- [A reproducible introduction on reproducibility](presentations/a-reproducible-intro-to-reproducibility.html)
+- [A reproducible introduction to reproducibility](presentations/a-reproducible-intro-to-reproducibility.html)
 
 
 
